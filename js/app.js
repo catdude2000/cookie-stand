@@ -52,6 +52,9 @@ let locationFive = {
   setCust: function(){
     this.custPerHour = randCust(2, 16) + ' customers this hour.';
   }
+  actSold: function(){
+    
+  }
 };
 
 
@@ -67,6 +70,8 @@ function randCust (minCust, maxCust) {
   return Math.floor(Math.random() * (maxCust - minCust) + minCust);
 }
 
+
+console.log()
 // Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
 
 // Store the results for each location in a separate array… perhaps as a property of the object representing that location
