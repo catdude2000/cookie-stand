@@ -76,12 +76,11 @@ locationThree.setCust();
 locationFour.setCust();
 locationFive.setCust();
 
-locationOne.setSold();
 
 function randCust (minCust, maxCust) {
   return Math.floor(Math.random() * (maxCust - minCust) + minCust);
 }
-
+const popArray = [locationOne.actSold, locationTwo.actSold, locationThree.actSold, locationFour.actSold, locationFive.actSold];
 
 
 // Store the results for each location in a separate array… perhaps as a property of the object representing that location
