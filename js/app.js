@@ -58,13 +58,20 @@ let locationFive = {
   minCust: 2,
   maxCust: 16,
   avgSales: 4.6,
+  hourlySold: [],
+  custPerHour: [],
   actCust: randCust(2, 16),
   setCust: function(){
-    let actCust = randCust(2, 16);
-    this.custPerHour = actCust + ' customers this hour.';
-    this.actSold = Math.floor(actCust + 4.6);
+    this.custPerHour = this.actCust + ' customers this hour.';
+    this.actSold = Math.floor(this.actCust + 4.6);
   }
 };
+for(let i = 0; i < 15; i++){
+  locationFive.custPerHour.push(locationFive.actCust);
+}
+for(let i = 0; i < 15; i++){
+  locationFive.hourlySold.push(Math.floor(locationFive.actCust * 4.6));
+}
 
 
 locationOne.setCust();
@@ -73,7 +80,7 @@ console.log(locationOne);
 locationTwo.setCust();
 locationThree.setCust();
 locationFour.setCust();
-locationFive.setCust();
+// locationFive.setCust();
 
 
 function randCust (minCust, maxCust) {
@@ -83,16 +90,19 @@ const popArray = [locationOne, locationTwo, locationThree, locationFour, locatio
 console.log(popArray);
 
 
-let soldList = document.createElement('stList');
-
+let soldList = document.getElementById('stList');
+console.log(soldList);
 
 for(let i = 0; i<popArray.length; i++){
-  let soldListLi = document.createElement('li');
-  soldListLi.textContent = popArray[i];
-  console.log(popArray[i].actSold);
+  for(let j = 0; j < 15; j++){
+    let soldListLi = document.createElement('li');
+    soldListLi.textContent = popArray[i].actSold;
+    console.log(soldListLi);
 
-  soldList.appendChild(soldListLi);
+    soldList.appendChild(soldListLi);
+  }
 }
+
 
 // let am1 = popArray[0];
 // document.getElementById('am1').innerhtml = am1;
