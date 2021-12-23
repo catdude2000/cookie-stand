@@ -13,9 +13,9 @@ let locationOne = {
   minCust: 23,
   maxCust: 65,
   avgSales: 6.3,
-  actCust: randCust(23, 65),
+  // actCust: randCust(23, 65),
   setCust: function(){
-    // let actCust = randCust(23, 65);
+    let actCust = randCust(23, 65);
     this.custPerHour = locationOne.actCust + ' customers this hour.';
     this.actSold = Math.floor(locationOne.actCust * 6.3);
   }
@@ -60,37 +60,44 @@ let locationFive = {
   avgSales: 4.6,
   hourlySold: [],
   custPerHour: [],
-  actCust: randCust(2, 16),
+  // actCust: randCust(2, 16),
   setCust: function(){
     for(let i = 0; i < 15; i++){
-      locationFive.custPerHour.push(locationFive.actCust);
+      // this.custPerHour.push(this.hourlySold);
+      this.custPerHour.push(randCust(2, 16));
+      console.log('custperhour', this.custPerHour);
     }
-    this.custPerHour = this.actCust + ' customers this hour.';
-    this.actSold = Math.floor(this.actCust * 4.6);
+    // this.custPerHour = this.actCust + ' customers this hour.';
+    // this.actSold = Math.floor(this.actCust * 4.6);
+  },
+  setCookPerHour: function(){
+    for(let i = 0; i < 15; i++){
+      this.hourlySold.push(Math.floor(this.custPerHour * 4.6));
+    }
   }
-  setCookiePHour: function(){
-      for(let i = 0; i < 15; i++){
-    locationFive.custPerHour.push(locationFive.actCust);
-  }
-  }
+  // setCookiePHour: function(){
+  //     for(let i = 0; i < 15; i++){
+  //   locationFive.custPerHour.push(locationFive.actCust);
+  // }
+  // }
 };
-// function lastTry(){
-
-
-// }
-for(let i = 0; i < 15; i++){
-  locationFive.hourlySold.push(Math.floor(locationFive.actCust * 4.6).length);
+function finalCountdown () {
+  for (let i = 0; i < 15; i++){
+    console.log('locationFive', locationFive);
+    locationFive.hourlySold.push(Math.floor(locationFive.custPerHour[i] * locationFive.avgSales));
+  }
 }
 
 
+
 locationOne.setCust();
-console.log(locationOne);
+// console.log(locationOne);
 
 locationTwo.setCust();  //activates setcust function
 locationThree.setCust();
 locationFour.setCust();
 locationFive.setCust();
-
+finalCountdown();
 
 function randCust (minCust, maxCust) {
   return Math.floor(Math.random() * (maxCust - minCust) + minCust);
@@ -100,13 +107,13 @@ console.log(popArray);
 
 
 let soldList = document.getElementById('stList');
-console.log(soldList);
+// console.log(soldList);
 
 for(let i = 0; i<popArray.length; i++){
   for(let j = 0; j < 15; j++){
     let soldListLi = document.createElement('li');
-    soldListLi.textContent = popArray[i].actSold;
-    console.log(soldListLi);
+    soldListLi.textContent = popArray[i].hourlySold;
+    // console.log(soldListLi);
 
     soldList.appendChild(soldListLi);
   }
