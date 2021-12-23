@@ -62,25 +62,34 @@ let locationFive = {
   custPerHour: [],
   actCust: randCust(2, 16),
   setCust: function(){
+    for(let i = 0; i < 15; i++){
+      locationFive.custPerHour.push(locationFive.actCust);
+    }
     this.custPerHour = this.actCust + ' customers this hour.';
-    this.actSold = Math.floor(this.actCust + 4.6);
+    this.actSold = Math.floor(this.actCust * 4.6);
+  }
+  setCookiePHour: function(){
+      for(let i = 0; i < 15; i++){
+    locationFive.custPerHour.push(locationFive.actCust);
+  }
   }
 };
+// function lastTry(){
+
+
+// }
 for(let i = 0; i < 15; i++){
-  locationFive.custPerHour.push(locationFive.actCust);
-}
-for(let i = 0; i < 15; i++){
-  locationFive.hourlySold.push(Math.floor(locationFive.actCust * 4.6));
+  locationFive.hourlySold.push(Math.floor(locationFive.actCust * 4.6).length);
 }
 
 
 locationOne.setCust();
 console.log(locationOne);
 
-locationTwo.setCust();
+locationTwo.setCust();  //activates setcust function
 locationThree.setCust();
 locationFour.setCust();
-// locationFive.setCust();
+locationFive.setCust();
 
 
 function randCust (minCust, maxCust) {
