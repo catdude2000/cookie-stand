@@ -13,10 +13,11 @@ let locationOne = {
   minCust: 23,
   maxCust: 65,
   avgSales: 6.3,
+  actCust: randCust(23, 65),
   setCust: function(){
-    let actCust = randCust(23, 65);
-    this.custPerHour = actCust + ' customers this hour.';
-    this.actSold = actCust * 6.3;
+    // let actCust = randCust(23, 65);
+    this.custPerHour = locationOne.actCust + ' customers this hour.';
+    this.actSold = Math.floor(locationOne.actCust * 6.3);
   }
 };
 let locationTwo = {
@@ -27,7 +28,7 @@ let locationTwo = {
   setCust: function(){
     let actCust = randCust(3, 24);
     this.custPerHour = actCust + ' customers this hour.';
-    this.actSold = actCust * 1.2;
+    this.actSold = Math.floor(actCust * 1.2);
   }
 };
 let locationThree = {
@@ -38,7 +39,7 @@ let locationThree = {
   setCust: function(){
     let actCust = randCust(11, 38);
     this.custPerHour = actCust + ' customers this hour.';
-    this.actSold = actCust * 3.7;
+    this.actSold = Math.floor(actCust * 3.7);
   }
 };
 let locationFour = {
@@ -49,7 +50,7 @@ let locationFour = {
   setCust: function(){
     let actCust = randCust(20, 38);
     this.custPerHour = actCust + ' customers this hour.';
-    this.actSold = actCust * 2.3;
+    this.actSold = Math.floor(actCust * 2.3);
   }
 };
 let locationFive = {
@@ -57,14 +58,12 @@ let locationFive = {
   minCust: 2,
   maxCust: 16,
   avgSales: 4.6,
+  actCust: randCust(2, 16),
   setCust: function(){
     let actCust = randCust(2, 16);
     this.custPerHour = actCust + ' customers this hour.';
-    this.actSold = actCust + 4.6;
+    this.actSold = Math.floor(actCust + 4.6);
   }
-  // setSold: function(){
-  //   this.actSold = custPerHour + 4.6;
-  // }
 };
 
 
@@ -80,7 +79,25 @@ locationFive.setCust();
 function randCust (minCust, maxCust) {
   return Math.floor(Math.random() * (maxCust - minCust) + minCust);
 }
-const popArray = [locationOne.actSold, locationTwo.actSold, locationThree.actSold, locationFour.actSold, locationFive.actSold];
+const popArray = [locationOne, locationTwo, locationThree, locationFour, locationFive];
+console.log(popArray);
+
+
+let soldList = document.createElement('stList');
+
+
+for(let i = 0; i<popArray.length; i++){
+  let soldListLi = document.createElement('li');
+  soldListLi.textContent = popArray[i];
+  console.log(popArray[i].actSold);
+
+  soldList.appendChild(soldListLi);
+}
+
+// let am1 = popArray[0];
+// document.getElementById('am1').innerhtml = am1;
+// console.log(am1);
+
 
 
 // Store the results for each location in a separate array… perhaps as a property of the object representing that location
