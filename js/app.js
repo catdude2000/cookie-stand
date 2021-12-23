@@ -13,8 +13,11 @@ let locationOne = {
   minCust: 23,
   maxCust: 65,
   avgSales: 6.3,
+  actCust: randCust(23, 65),
   setCust: function(){
-    this.custPerHour = randCust(23, 65) + ' customers this hour.';
+    // let actCust = randCust(23, 65);
+    this.custPerHour = locationOne.actCust + ' customers this hour.';
+    this.actSold = Math.floor(locationOne.actCust * 6.3);
   }
 };
 let locationTwo = {
@@ -23,7 +26,9 @@ let locationTwo = {
   maxCust: 24,
   avgSales: 1.2,
   setCust: function(){
-    this.custPerHour = randCust(3, 24) + ' customers this hour.';
+    let actCust = randCust(3, 24);
+    this.custPerHour = actCust + ' customers this hour.';
+    this.actSold = Math.floor(actCust * 1.2);
   }
 };
 let locationThree = {
@@ -32,7 +37,9 @@ let locationThree = {
   maxCust: 38,
   avgSales: 3.7,
   setCust: function(){
-    this.custPerHour = randCust(11, 38) + ' customers this hour.';
+    let actCust = randCust(11, 38);
+    this.custPerHour = actCust + ' customers this hour.';
+    this.actSold = Math.floor(actCust * 3.7);
   }
 };
 let locationFour = {
@@ -41,7 +48,9 @@ let locationFour = {
   maxCust: 38,
   avgSales: 2.3,
   setCust: function(){
-    this.custPerHour = randCust(20, 38) + ' customers this hour.';
+    let actCust = randCust(20, 38);
+    this.custPerHour = actCust + ' customers this hour.';
+    this.actSold = Math.floor(actCust * 2.3);
   }
 };
 let locationFive = {
@@ -49,32 +58,69 @@ let locationFive = {
   minCust: 2,
   maxCust: 16,
   avgSales: 4.6,
+  hourlySold: [],
+  custPerHour: [],
+  actCust: randCust(2, 16),
   setCust: function(){
-    this.custPerHour = randCust(2, 16) + ' customers this hour.';
+    for(let i = 0; i < 15; i++){
+      locationFive.custPerHour.push(locationFive.actCust);
+    }
+    this.custPerHour = this.actCust + ' customers this hour.';
+    this.actSold = Math.floor(this.actCust * 4.6);
   }
-  actSold: function(){
-    
+  setCookiePHour: function(){
+      for(let i = 0; i < 15; i++){
+    locationFive.custPerHour.push(locationFive.actCust);
+  }
   }
 };
+// function lastTry(){
+
+
+// }
+for(let i = 0; i < 15; i++){
+  locationFive.hourlySold.push(Math.floor(locationFive.actCust * 4.6).length);
+}
 
 
 locationOne.setCust();
 console.log(locationOne);
 
-locationTwo.setCust();
+locationTwo.setCust();  //activates setcust function
 locationThree.setCust();
 locationFour.setCust();
 locationFive.setCust();
 
+
 function randCust (minCust, maxCust) {
   return Math.floor(Math.random() * (maxCust - minCust) + minCust);
 }
+const popArray = [locationOne, locationTwo, locationThree, locationFour, locationFive];
+console.log(popArray);
 
 
-console.log()
-// Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
+let soldList = document.getElementById('stList');
+console.log(soldList);
+
+for(let i = 0; i<popArray.length; i++){
+  for(let j = 0; j < 15; j++){
+    let soldListLi = document.createElement('li');
+    soldListLi.textContent = popArray[i].actSold;
+    console.log(soldListLi);
+
+    soldList.appendChild(soldListLi);
+  }
+}
+
+
+// let am1 = popArray[0];
+// document.getElementById('am1').innerhtml = am1;
+// console.log(am1);
+
+
 
 // Store the results for each location in a separate array… perhaps as a property of the object representing that location
+
 // Display the values of each array as unordered lists in the browser
 // Calculating the sum of these hourly totals; your output for each location should look like this:
 
