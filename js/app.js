@@ -14,7 +14,9 @@ let locationOne = {
   maxCust: 65,
   avgSales: 6.3,
   setCust: function(){
-    this.custPerHour = randCust(23, 65) + ' customers this hour.';
+    let actCust = randCust(23, 65);
+    this.custPerHour = actCust + ' customers this hour.';
+    this.actSold = actCust * 6.3;
   }
 };
 let locationTwo = {
@@ -23,7 +25,9 @@ let locationTwo = {
   maxCust: 24,
   avgSales: 1.2,
   setCust: function(){
-    this.custPerHour = randCust(3, 24) + ' customers this hour.';
+    let actCust = randCust(3, 24);
+    this.custPerHour = actCust + ' customers this hour.';
+    this.actSold = actCust * 1.2;
   }
 };
 let locationThree = {
@@ -32,7 +36,9 @@ let locationThree = {
   maxCust: 38,
   avgSales: 3.7,
   setCust: function(){
-    this.custPerHour = randCust(11, 38) + ' customers this hour.';
+    let actCust = randCust(11, 38);
+    this.custPerHour = actCust + ' customers this hour.';
+    this.actSold = actCust * 3.7;
   }
 };
 let locationFour = {
@@ -41,7 +47,9 @@ let locationFour = {
   maxCust: 38,
   avgSales: 2.3,
   setCust: function(){
-    this.custPerHour = randCust(20, 38) + ' customers this hour.';
+    let actCust = randCust(20, 38);
+    this.custPerHour = actCust + ' customers this hour.';
+    this.actSold = actCust * 2.3;
   }
 };
 let locationFive = {
@@ -50,11 +58,13 @@ let locationFive = {
   maxCust: 16,
   avgSales: 4.6,
   setCust: function(){
-    this.custPerHour = randCust(2, 16) + ' customers this hour.';
+    let actCust = randCust(2, 16);
+    this.custPerHour = actCust + ' customers this hour.';
+    this.actSold = actCust + 4.6;
   }
-  actSold: function(){
-    
-  }
+  // setSold: function(){
+  //   this.actSold = custPerHour + 4.6;
+  // }
 };
 
 
@@ -66,15 +76,16 @@ locationThree.setCust();
 locationFour.setCust();
 locationFive.setCust();
 
+locationOne.setSold();
+
 function randCust (minCust, maxCust) {
   return Math.floor(Math.random() * (maxCust - minCust) + minCust);
 }
 
 
-console.log()
-// Calculate and store the simulated amounts of cookies purchased for each hour at each location using average cookies purchased and the random number of customers generated
 
 // Store the results for each location in a separate array… perhaps as a property of the object representing that location
+
 // Display the values of each array as unordered lists in the browser
 // Calculating the sum of these hourly totals; your output for each location should look like this:
 
