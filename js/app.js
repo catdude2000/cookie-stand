@@ -54,23 +54,19 @@ let locationFour = {
       this.custPerHour.push(randCust(this.minCust, this.maxCust));
       console.log('custperhour', this.custPerHour);
     }
-
-    // let actCust = randCust(20, 38);
-    // this.custPerHour = actCust + ' customers this hour.';
-    // this.actSold = Math.floor(actCust * 2.3);
   },
   setCookPerHour: function (){
     for(let i = 0; i < 14; i++){
-      this.hourlySold.push(Math.floor(this.custPerHour * 4.6));
+      this.hourlySold.push(Math.floor(this.custPerHour * this.avgSales));
     }
   }
 };
-function finalCountdown4 () {
-  for (let i = 0; i < 14; i++){
-    // console.log('locationFive', locationFive);
-    locationFour.hourlySold.push(Math.floor(locationFour.custPerHour[i] * locationFour.avgSales));
-  }
-}
+// function finalCountdown4 () {
+//   for (let i = 0; i < 14; i++){
+//     // console.log('locationFive', locationFive);
+//     locationFour.hourlySold.push(Math.floor(locationFour.custPerHour[i] * locationFour.avgSales));
+//   }
+// }
 let locationFive = {
   place: 'Lima',
   minCust: 2,
@@ -93,7 +89,6 @@ let locationFive = {
       this.hourlySold.push(Math.floor(this.custPerHour[i] * 4.6));
     }
   }
-
 };
 // function finalCountdown5 () {
 //   for (let i = 0; i < 14; i++){
@@ -104,12 +99,15 @@ let locationFive = {
 
 
 
-locationOne.setCust();
-// console.log(locationOne);
-
-locationTwo.setCust(); //activates setcust function
-locationThree.setCust();
+// locationOne.setCust();
+// // console.log(locationOne);
+// locationOne.setCookPerHour();
+// locationTwo.setCust(); //activates setcust function
+// locationTwo.setCookPerHour();
+// locationThree.setCust();
+// locationThree.setCookPerHour();
 locationFour.setCust();
+locationFour.setCookPerHour();
 locationFive.setCust();
 locationFive.setCookPerHour();
 // finalCountdown5();
@@ -118,7 +116,8 @@ function randCust (minCust, maxCust) {
   return Math.floor(Math.random() * (maxCust - minCust) + minCust);
 }
 const popArray = [
-  // locationOne, locationTwo, locationThree, locationFour,
+  // locationOne, locationTwo, locationThree, 
+  locationFour,
   locationFive];
 console.log(popArray);
 const timeArray = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
