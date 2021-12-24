@@ -90,21 +90,17 @@ let locationFive = {
   },
   setCookPerHour: function(){
     for(let i = 0; i < 14; i++){
-      this.hourlySold.push(Math.floor(this.custPerHour * 4.6));
+      this.hourlySold.push(Math.floor(this.custPerHour[i] * 4.6));
     }
   }
-  // setCookiePHour: function(){
-  //     for(let i = 0; i < 14; i++){
-  //   locationFive.custPerHour.push(locationFive.actCust);
-  // }
-  // }
+
 };
-function finalCountdown () {
-  for (let i = 0; i < 14; i++){
-    // console.log('locationFive', locationFive);
-    locationFive.hourlySold.push(Math.floor(locationFive.custPerHour[i] * locationFive.avgSales));
-  }
-}
+// function finalCountdown5 () {
+//   for (let i = 0; i < 14; i++){
+//     // console.log('locationFive', locationFive);
+//     locationFive.hourlySold.push(Math.floor(locationFive.custPerHour[i] * locationFive.avgSales));
+//   }
+// }
 
 
 
@@ -115,32 +111,37 @@ locationTwo.setCust(); //activates setcust function
 locationThree.setCust();
 locationFour.setCust();
 locationFive.setCust();
-finalCountdown();
-finalCountdown4();
+locationFive.setCookPerHour();
+// finalCountdown5();
+// finalCountdown4();
 function randCust (minCust, maxCust) {
   return Math.floor(Math.random() * (maxCust - minCust) + minCust);
 }
-const popArray = [locationOne, locationTwo, locationThree, locationFour, locationFive];
+const popArray = [
+  // locationOne, locationTwo, locationThree, locationFour,
+  locationFive];
 console.log(popArray);
+const timeArray = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+
 
 
 let soldList = document.getElementById('stList');
-// console.log(soldList);
+console.log(soldList);
 
 for(let i = 0; i< popArray.length; i++){
-  // for(let j = 0; j < 14; j++){
-  let soldListLi = document.createElement('li');
-  soldListLi.textContent = popArray[i].hourlySold;
-  // console.log(soldListLi);
+  for(let j = 0; j < timeArray.length; j++){
+    let soldListLi = document.createElement('li');
+    soldListLi.textContent = timeArray[j] + popArray[i].hourlySold[j];
+    // console.log('fff', popArray[i].hourlySold[j]);
+    // console.log(soldListLi);
 
-  soldList.appendChild(soldListLi);
+    soldList.appendChild(soldListLi);
+    // create some lis
+  }
 }
-// }
-
-
-// let am1 = popArray[0];
-// document.getElementById('am1').innerhtml = am1;
-// console.log(am1);
+// let h2 = document.createElement('h2');
+// h2.textContent = locationFive.place;
+// soldListLi.appendChild(h2);
 
 
 
