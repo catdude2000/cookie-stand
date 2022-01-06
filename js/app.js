@@ -24,6 +24,11 @@ let locationOne = {
     // let actCust = randCust(23, 65);
     // this.custPerHour = locationOne.actCust + ' customers this hour.';
     // this.actSold = Math.floor(locationOne.actCust * 6.3);
+  },
+  setCookPerHour: function (){
+    for(let i = 0; i < 14; i++){
+      this.hourlySold.push(Math.floor(this.custPerHour * this.avgSales));
+    }
   }
 };
 let locationTwo = {
@@ -41,6 +46,11 @@ let locationTwo = {
     // let actCust = randCust(3, 24);
     // this.custPerHour = actCust + ' customers this hour.';
     // this.actSold = Math.floor(actCust * 1.2);
+  },
+  setCookPerHour: function (){
+    for(let i = 0; i < 14; i++){
+      this.hourlySold.push(Math.floor(this.custPerHour * this.avgSales));
+    }
   }
 };
 let locationThree = {
@@ -58,6 +68,11 @@ let locationThree = {
     // let actCust = randCust(11, 38);
     // this.custPerHour = actCust + ' customers this hour.';
     // this.actSold = Math.floor(actCust * 3.7);
+  },
+  setCookPerHour: function (){
+    for(let i = 0; i < 14; i++){
+      this.hourlySold.push(Math.floor(this.custPerHour * this.avgSales));
+    }
   }
 };
 let locationFour = {
@@ -79,12 +94,7 @@ let locationFour = {
     }
   }
 };
-// function finalCountdown4 () {
-//   for (let i = 0; i < 14; i++){
-//     // console.log('locationFive', locationFive);
-//     locationFour.hourlySold.push(Math.floor(locationFour.custPerHour[i] * locationFour.avgSales));
-//   }
-// }
+
 let locationFive = {
   place: 'Lima',
   minCust: 2,
@@ -92,7 +102,6 @@ let locationFive = {
   avgSales: 4.6,
   hourlySold: [],
   custPerHour: [],
-  // actCust: randCust(2, 16),
   setCust: function(){
     for(let i = 0; i < 14; i++){
       // this.custPerHour.push(this.hourlySold);
@@ -108,28 +117,9 @@ let locationFive = {
     }
   }
 };
-// function finalCountdown5 () {
-//   for (let i = 0; i < 14; i++){
-//     // console.log('locationFive', locationFive);
-//     locationFive.hourlySold.push(Math.floor(locationFive.custPerHour[i] * locationFive.avgSales));
-//   }
-// }
 
 
 
-locationOne.setCust();
-// console.log(locationOne);
-locationOne.setCookPerHour();
-locationTwo.setCust(); //activates setcust function
-locationTwo.setCookPerHour();
-locationThree.setCust();
-locationThree.setCookPerHour();
-locationFour.setCust();
-locationFour.setCookPerHour();
-locationFive.setCust();
-locationFive.setCookPerHour();
-// finalCountdown5();
-// finalCountdown4();
 function randCust (minCust, maxCust) {
   return Math.floor(Math.random() * (maxCust - minCust) + minCust);
 }
@@ -156,6 +146,19 @@ for(let i = 0; i< popArray.length; i++){
     // create some lis
   }
 }
+
+// locationOne.setCust();
+// console.log(locationOne);
+// locationOne.setCookPerHour();
+// locationTwo.setCust(); //activates setcust function
+// locationTwo.setCookPerHour();
+locationThree.setCust();
+// locationThree.setCookPerHour();
+locationFour.setCust();
+locationFour.setCookPerHour();
+locationFive.setCust();
+// locationFive.setCookPerHour();
+
 // let h2 = document.createElement('h2');
 // h2.textContent = locationFive.place;
 // soldListLi.appendChild(h2);
