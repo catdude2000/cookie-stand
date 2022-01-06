@@ -1,8 +1,22 @@
-/* ul {
-  /* display:table; */
-  /* vertical-align: middle; */
-  /* float: left; */
-  /* width: 200px; */
-  /* height: 300px; */
-  /* padding: 5px; */
-/* } */ 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Roboto+Condensed:ital,wght@1,300&display=swap');
+h1 {
+  margin-top: 150px;
+  font-size: 100px;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  background-color: skyblue;
+  color: rgb(78, 91, 105);
+}
+body {
+  font-family: 'Times New Roman', Times;
+  background-color: salmon;
+  color: darkred;
+}
+#sales {
+  font-size: larger;
+  padding: 20px;
+  font-family: 'Segoe UI', Verdana;
+  color: cornflowerblue;
+  background-color: darkgreen;
+  letter-spacing: 4px;
+}
