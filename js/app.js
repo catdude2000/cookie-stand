@@ -133,12 +133,16 @@ let locationFive = {
 
 locationOne.setCust();
 locationOne.setCookPerHour();
+locationOne.setTotal();
 locationTwo.setCust(); //activates setcust function
 locationTwo.setCookPerHour();
+locationTwo.setTotal();
 locationThree.setCust();
 locationThree.setCookPerHour();
+locationThree.setTotal();
 locationFour.setCust();
 locationFour.setCookPerHour();
+locationFour.setTotal();
 locationFive.setCust();
 locationFive.setCookPerHour();
 locationFive.setTotal();
