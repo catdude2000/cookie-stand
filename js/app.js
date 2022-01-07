@@ -178,3 +178,6 @@ for(let i = 0; i< popArray.length; i++){
 
 
 // Pat will need to be able to add and remove locations from the daily projections report, and Pat will also need to be able to easily modify the input numbers for each location based on day of the week, special events, and other factors. Pat would like to see these numbers with nice formatting in a web application.
+
+
+// Best way to add image to images folder?
