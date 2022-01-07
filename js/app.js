@@ -18,6 +18,13 @@ let locationOne = {
     for(let i = 0; i < 14; i++){
       this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
     }
+  },
+  setTotal: function() {
+    let sum = 0;
+    for (let i = 0; i < this.hourlySold.length; i++) {
+      sum += this.hourlySold[i];
+    }
+    console.log('sum', sum);
   }
 };
 let locationTwo = {
@@ -36,6 +43,13 @@ let locationTwo = {
     for(let i = 0; i < 14; i++){
       this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
     }
+  },
+  setTotal: function() {
+    let sum = 0;
+    for (let i = 0; i < this.hourlySold.length; i++) {
+      sum += this.hourlySold[i];
+    }
+    console.log('sum', sum);
   }
 };
 let locationThree = {
@@ -54,6 +68,13 @@ let locationThree = {
     for(let i = 0; i < 14; i++){
       this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
     }
+  },
+  setTotal: function() {
+    let sum = 0;
+    for (let i = 0; i < this.hourlySold.length; i++) {
+      sum += this.hourlySold[i];
+    }
+    console.log('sum', sum);
   }
 };
 let locationFour = {
@@ -72,6 +93,13 @@ let locationFour = {
     for(let i = 0; i < 14; i++){
       this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
     }
+  },
+  setTotal: function() {
+    let sum = 0;
+    for (let i = 0; i < this.hourlySold.length; i++) {
+      sum += this.hourlySold[i];
+    }
+    console.log('sum', sum);
   }
 };
 
@@ -145,8 +173,4 @@ for(let i = 0; i< popArray.length; i++){
 // console.log(sum);
 
 
-// Calculating the sum of these hourly totals; your output for each location should look like this:
-
-// Seattle
-// 6am: 16 cookies
-// 7am: 20 cookies
+// Pat will need to be able to add and remove locations from the daily projections report, and Pat will also need to be able to easily modify the input numbers for each location based on day of the week, special events, and other factors. Pat would like to see these numbers with nice formatting in a web application.
