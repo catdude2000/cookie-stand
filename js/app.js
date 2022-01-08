@@ -151,23 +151,20 @@ function randCust (minCust, maxCust) {
   return Math.floor(Math.random() * (maxCust - minCust) + minCust);
 }
 const popArray = [
-  locationOne, locationTwo, locationThree,
-  locationFour,
-  locationFive];
+  locationOne, locationTwo, locationThree, locationFour, locationFive]; //array needed to populate the objects with data
 // console.log('poparray', popArray);
-const timeArray = ['6:00am: ', '7:00am: ', '8:00am: ', '9:00am: ', '10:00am: ', '11:00am: ', '12:00pm: ', '1:00pm: ', '2:00pm: ', '3:00pm: ', '4:00pm: ', '5:00pm: ', '6:00pm: ', '7:00pm: ', 'Total: '];
+const timeArray = ['6:00am: ', '7:00am: ', '8:00am: ', '9:00am: ', '10:00am: ', '11:00am: ', '12:00pm: ', '1:00pm: ', '2:00pm: ', '3:00pm: ', '4:00pm: ', '5:00pm: ', '6:00pm: ', '7:00pm: ', 'Total: ']; //array needed to display set data on page
 
 
 
-let soldList = document.getElementById('stList');
+let soldList = document.getElementById('stList'); //links soldList to the stList tag in html
 console.log('soldlist', soldList);
 
-for(let i = 0; i< popArray.length; i++){
-  for(let j = 0; j < timeArray.length; j++){
-    let soldListLi = document.createElement('li');
-    soldListLi.textContent = timeArray[j] + popArray[i].hourlySold[j];
-    soldList.appendChild(soldListLi);
-    // create some lis
+for(let i = 0; i< popArray.length; i++){ //iterates for loop below through array of location objects
+  for(let j = 0; j < timeArray.length; j++){ //iterates through array of set times for each object in popArray
+    let soldListLi = document.createElement('li'); //creates list items (li's) in soldListLi
+    soldListLi.textContent = timeArray[j] + popArray[i].hourlySold[j]; //fills list with iterated arrays to display hourly sold from each object/location
+    soldList.appendChild(soldListLi); //puts soldListLi data iterated above into soldList (which is linked to stList in the html file)
   }
 }
 // let sum = 0;
