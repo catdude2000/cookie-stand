@@ -1,27 +1,27 @@
 'use strict';
 console.log('app.js file is connected');
 
-let locationOne = {
+let locationOne = { //creates first object
   place: 'Seattle',
   minCust: 23,
   maxCust: 65,
   avgSales: 6.3,
-  hourlySold: [],
+  hourlySold: [], //creates array to be filled later
   custPerHour: [],
   setCust: function(){
     for(let i = 0; i < 14; i++){
-      this.custPerHour.push(randCust(this.minCust, this.maxCust));
-      console.log('custperhour', this.custPerHour);
+      this.custPerHour.push(randCust(this.minCust, this.maxCust)); //fills custPerHour array with numbers using randCust function
+      // console.log('custperhour', this.custPerHour);
     }
   },
   setCookPerHour: function (){
     for(let i = 0; i < 14; i++){
-      this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
+      this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales)); //uses set avg sales with already randomized to give number of cookies sold per hour
     }
   },
   setTotal: function() {
     let sum = 0;
-    for (let i = 0; i < this.hourlySold.length; i++) {
+    for (let i = 0; i < this.hourlySold.length; i++) { //adds up randomized hourly sold for a total (behind the scenes)
       sum += this.hourlySold[i];
     }
     console.log('sum', sum);
@@ -36,7 +36,7 @@ let locationTwo = {
   custPerHour: [],
   setCust: function(){
     for(let i = 0; i < 14; i++){
-      this.custPerHour.push(randCust(this.minCust, this.maxCust));
+      // this.custPerHour.push(randCust(this.minCust, this.maxCust));
     }
   },
   setCookPerHour: function (){
@@ -131,10 +131,10 @@ let locationFive = {
   }
 };
 
-locationOne.setCust();
-locationOne.setCookPerHour();
-locationOne.setTotal();
-locationTwo.setCust(); //activates setcust function
+locationOne.setCust(); //activates setcust function for location inside object
+locationOne.setCookPerHour(); //" setCookPerHour "
+locationOne.setTotal(); //" setTotal "
+locationTwo.setCust();
 locationTwo.setCookPerHour();
 locationTwo.setTotal();
 locationThree.setCust();
@@ -148,13 +148,12 @@ locationFive.setCookPerHour();
 locationFive.setTotal();
 
 function randCust (minCust, maxCust) {
-  return Math.floor(Math.random() * (maxCust - minCust) + minCust);
+  return Math.floor(Math.random() * (maxCust - minCust) + minCust); //function used in each object to create randomized numbers of customers
 }
 const popArray = [
   locationOne, locationTwo, locationThree, locationFour, locationFive]; //array needed to populate the objects with data
 // console.log('poparray', popArray);
 const timeArray = ['6:00am: ', '7:00am: ', '8:00am: ', '9:00am: ', '10:00am: ', '11:00am: ', '12:00pm: ', '1:00pm: ', '2:00pm: ', '3:00pm: ', '4:00pm: ', '5:00pm: ', '6:00pm: ', '7:00pm: ', 'Total: ']; //array needed to display set data on page
-
 
 
 let soldList = document.getElementById('stList'); //links soldList to the stList tag in html
