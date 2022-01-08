@@ -11,154 +11,177 @@ function Location(place, minCust, maxCust, avgSales, hourlySold, custPerHour, to
   this.totalCookieSum = totalCookieSum;
 }
 
-var locationOne = new Location('Seattle', 23, 65, 6.3, [], [], 0);
+const locationOne = new Location('Seattle', 23, 65, 6.3, [], [], 0);
 
-var locationTwo = new Location('Tokyo', 3, 24, 1.2, [], [], 0);
+const locationTwo = new Location('Tokyo', 3, 24, 1.2, [], [], 0);
 
-var locationThree = new Location('Dubai', 11, 38, 3.7, [], [], 0);
+const locationThree = new Location('Dubai', 11, 38, 3.7, [], [], 0);
 
-var locationFour = new Location('Paris', 20, 38, 2.3, [], [], 0);
+const locationFour = new Location('Paris', 20, 38, 2.3, [], [], 0);
 
-var locationFive = new Location('Lima', 2, 16, 4.6, [], [], 0);
+const locationFive = new Location('Lima', 2, 16, 4.6, [], [], 0);
 
 
 function randCust (minCust, maxCust) {
   return Math.floor(Math.random() * (maxCust - minCust) + minCust); //function used in each object to create randomized numbers of customers
 }
 
-let locationOne = { //creates first object
-  place: 'Seattle',
-  minCust: 23,
-  maxCust: 65,
-  avgSales: 6.3,
-  hourlySold: [], //creates array to be filled later
-  custPerHour: [],
-  totalCookieSum: 0,
-  setCust: function(){
-    for(let i = 0; i < 14; i++){
-      this.custPerHour.push(randCust(this.minCust, this.maxCust)); //fills custPerHour array with numbers using randCust function
-      // console.log('custperhour', this.custPerHour);
-    }
-  },
-  setCookPerHour: function (){
-    for(let i = 0; i < 14; i++){
-      this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales)); //uses set avg sales with already randomized to give number of cookies sold per hour
-    }
-  },
-  setTotal: function() {
-    // let sum = 0;
-    for (let i = 0; i < this.hourlySold.length; i++) { //adds up randomized hourly sold for a total (behind the scenes)
-      this.totalCookieSum += this.hourlySold[i];
-    }
-    // console.log('sum', sum);
-  }
-};
-let locationTwo = {
-  place: 'Tokyo',
-  minCust: 3,
-  maxCust: 24,
-  avgSales: 1.2,
-  hourlySold: [],
-  custPerHour: [],
-  totalCookieSum: 0,
-  setCust: function(){
-    for(let i = 0; i < 14; i++){
-      this.custPerHour.push(randCust(this.minCust, this.maxCust));
-    }
-  },
-  setCookPerHour: function (){
-    for(let i = 0; i < 14; i++){
-      this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
-    }
-  },
-  setTotal: function() {
-    // let sum = 0;
-    for (let i = 0; i < this.hourlySold.length; i++) {
-      this.totalCookieSum += this.hourlySold[i];
-    }
-    // console.log('sum', sum);
-  }
-};
-let locationThree = {
-  place: 'dubai',
-  minCust: 11,
-  maxCust: 38,
-  avgSales: 3.7,
-  hourlySold: [],
-  custPerHour: [],
-  totalCookieSum: 0,
-  setCust: function(){
-    for(let i = 0; i < 14; i++){
-      this.custPerHour.push(randCust(this.minCust, this.maxCust));
-    }
-  },
-  setCookPerHour: function (){
-    for(let i = 0; i < 14; i++){
-      this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
-    }
-  },
-  setTotal: function() {
-    // let sum = 0;
-    for (let i = 0; i < this.hourlySold.length; i++) {
-      this.totalCookieSum += this.hourlySold[i];
-    }
-    // console.log('sum', sum);
-  }
-};
-let locationFour = {
-  place: 'Paris',
-  minCust: 20,
-  maxCust: 38,
-  avgSales: 2.3,
-  hourlySold: [],
-  custPerHour: [],
-  totalCookieSum: 0,
-  setCust: function(){
-    for(let i = 0; i < 14; i++){
-      this.custPerHour.push(randCust(this.minCust, this.maxCust));
-    }
-  },
-  setCookPerHour: function (){
-    for(let i = 0; i < 14; i++){
-      this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
-    }
-  },
-  setTotal: function() {
-    // let sum = 0;
-    for (let i = 0; i < this.hourlySold.length; i++) {
-      this.totalCookieSum += this.hourlySold[i];
-    }
-    // console.log('sum', sum);
+
+
+
+Location.prototype.setCust = function(){
+  for(let i = 0; i < 14; i++){
+    this.custPerHour.push(randCust(this.minCust, this.maxCust)); //fills custPerHour array with numbers using randCust function
+    console.log('custperhour', this.custPerHour);
   }
 };
 
-let locationFive = {
-  place: 'Lima',
-  minCust: 2,
-  maxCust: 16,
-  avgSales: 4.6,
-  hourlySold: [],
-  custPerHour: [],
-  totalCookieSum: 0,
-  setCust: function(){
-    for(let i = 0; i < 14; i++){
-      this.custPerHour.push(randCust(this.minCust, this.maxCust));
-    }
-  },
-  setCookPerHour: function(){
-    for(let i = 0; i < 14; i++){
-      this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
-      // console.log('hourlysold', this.hourlySold);
-    }
-  },
-  setTotal: function() {
-    // let sum = 0;
-    for (let i = 0; i < this.hourlySold.length; i++) {
-      this.totalCookieSum += this.hourlySold[i];
-    }
-    // console.log('sum', sum);
+Location.prototype.setCookPerHour = function(){
+  for(let i = 0; i < 14; i++){
+    this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales)); //uses set avg sales with already randomized to give number of cookies sold per hour
   }
 };
+
+Location.prototype.setTotal = function() {
+  for (let i = 0; i < this.hourlySold.length; i++) { //adds up randomized hourly sold for a total (behind the scenes)
+    this.totalCookieSum += this.hourlySold[i];
+  }
+};
+
+
+// let locationOne = { //creates first object
+//   place: 'Seattle',
+//   minCust: 23,
+//   maxCust: 65,
+//   avgSales: 6.3,
+//   hourlySold: [], //creates array to be filled later
+//   custPerHour: [],
+//   totalCookieSum: 0,
+//   setCust: function(){
+//     for(let i = 0; i < 14; i++){
+//       this.custPerHour.push(randCust(this.minCust, this.maxCust)); //fills custPerHour array with numbers using randCust function
+//       // console.log('custperhour', this.custPerHour);
+//     }
+//   },
+//   setCookPerHour: function (){
+//     for(let i = 0; i < 14; i++){
+//       this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales)); //uses set avg sales with already randomized to give number of cookies sold per hour
+//     }
+//   },
+//   setTotal: function() {
+//     // let sum = 0;
+//     for (let i = 0; i < this.hourlySold.length; i++) { //adds up randomized hourly sold for a total (behind the scenes)
+//       this.totalCookieSum += this.hourlySold[i];
+//     }
+//     // console.log('sum', sum);
+//   }
+// };
+// let locationTwo = {
+//   place: 'Tokyo',
+//   minCust: 3,
+//   maxCust: 24,
+//   avgSales: 1.2,
+//   hourlySold: [],
+//   custPerHour: [],
+//   totalCookieSum: 0,
+//   setCust: function(){
+//     for(let i = 0; i < 14; i++){
+//       this.custPerHour.push(randCust(this.minCust, this.maxCust));
+//     }
+//   },
+//   setCookPerHour: function (){
+//     for(let i = 0; i < 14; i++){
+//       this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
+//     }
+//   },
+//   setTotal: function() {
+//     // let sum = 0;
+//     for (let i = 0; i < this.hourlySold.length; i++) {
+//       this.totalCookieSum += this.hourlySold[i];
+//     }
+//     // console.log('sum', sum);
+//   }
+// };
+// let locationThree = {
+//   place: 'dubai',
+//   minCust: 11,
+//   maxCust: 38,
+//   avgSales: 3.7,
+//   hourlySold: [],
+//   custPerHour: [],
+//   totalCookieSum: 0,
+//   setCust: function(){
+//     for(let i = 0; i < 14; i++){
+//       this.custPerHour.push(randCust(this.minCust, this.maxCust));
+//     }
+//   },
+//   setCookPerHour: function (){
+//     for(let i = 0; i < 14; i++){
+//       this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
+//     }
+//   },
+//   setTotal: function() {
+//     // let sum = 0;
+//     for (let i = 0; i < this.hourlySold.length; i++) {
+//       this.totalCookieSum += this.hourlySold[i];
+//     }
+//     // console.log('sum', sum);
+//   }
+// };
+// let locationFour = {
+//   place: 'Paris',
+//   minCust: 20,
+//   maxCust: 38,
+//   avgSales: 2.3,
+//   hourlySold: [],
+//   custPerHour: [],
+//   totalCookieSum: 0,
+//   setCust: function(){
+//     for(let i = 0; i < 14; i++){
+//       this.custPerHour.push(randCust(this.minCust, this.maxCust));
+//     }
+//   },
+//   setCookPerHour: function (){
+//     for(let i = 0; i < 14; i++){
+//       this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
+//     }
+//   },
+//   setTotal: function() {
+//     // let sum = 0;
+//     for (let i = 0; i < this.hourlySold.length; i++) {
+//       this.totalCookieSum += this.hourlySold[i];
+//     }
+//     // console.log('sum', sum);
+//   }
+// };
+
+// let locationFive = {
+//   place: 'Lima',
+//   minCust: 2,
+//   maxCust: 16,
+//   avgSales: 4.6,
+//   hourlySold: [],
+//   custPerHour: [],
+//   totalCookieSum: 0,
+//   setCust: function(){
+//     for(let i = 0; i < 14; i++){
+//       this.custPerHour.push(randCust(this.minCust, this.maxCust));
+//     }
+//   },
+//   setCookPerHour: function(){
+//     for(let i = 0; i < 14; i++){
+//       this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
+//       // console.log('hourlysold', this.hourlySold);
+//     }
+//   },
+//   setTotal: function() {
+//     // let sum = 0;
+//     for (let i = 0; i < this.hourlySold.length; i++) {
+//       this.totalCookieSum += this.hourlySold[i];
+//     }
+//     // console.log('sum', sum);
+//   }
+// };
 
 locationOne.setCust(); //activates setcust function for location inside object
 locationOne.setCookPerHour(); //" setCookPerHour "
@@ -178,7 +201,7 @@ locationFive.setTotal();
 
 const popArray = [
   locationOne, locationTwo, locationThree, locationFour, locationFive]; //array needed to populate the objects with data
-// console.log('poparray', popArray);
+console.log('poparray', popArray);
 const timeArray = ['6:00am: ', '7:00am: ', '8:00am: ', '9:00am: ', '10:00am: ', '11:00am: ', '12:00pm: ', '1:00pm: ', '2:00pm: ', '3:00pm: ', '4:00pm: ', '5:00pm: ', '6:00pm: ', '7:00pm: ']; //array needed to display set data on page
 
 
@@ -195,6 +218,13 @@ for(let i = 0; i< popArray.length; i++){ //iterates through array of location ob
   storeTotal.textContent = 'Total: ' + popArray[i].totalCookieSum; // creates text for li
   soldList.appendChild(storeTotal); //puts text in li
 }
+
+
+
+Location.prototype.createElement = function() {
+  let parentElement = document.getElementById('stList');
+  console.log(parentElement);
+};
 // let sum = 0;
 // for (let k = 0; k < soldList.length; k++) {
 //   sum += soldList[k];
