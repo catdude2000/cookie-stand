@@ -1,17 +1,25 @@
 'use strict';
 console.log('app.js file is connected');
 
-function Location(locale, mininumCust, maximumCust, averageSales, cooksHourlySold, totalCookies) {
-  this.locale = locale;
-  this.mininumCust = mininumCust;
-  this.maximumCust = maximumCust;
-  this.averageSales = averageSales;
-  this.cooksHourlySold = cooksHourlySold;
-  this.totalCookies = totalCookies;
+function Location(place, minCust, maxCust, avgSales, hourlySold, custPerHour, totalCookieSum) {
+  this.place = place;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgSales = avgSales;
+  this.hourlySold = hourlySold;
+  this.custPerHour = custPerHour;
+  this.totalCookieSum = totalCookieSum;
 }
 
-new Location('Seattle', 23, 65, 6.3, [], [], 0);
+var locationOne = new Location('Seattle', 23, 65, 6.3, [], [], 0);
 
+var locationTwo = new Location('Tokyo', 3, 24, 1.2, [], [], 0);
+
+var locationThree = new Location('Dubai', 11, 38, 3.7, [], [], 0);
+
+var locationFour = new Location('Paris', 20, 38, 2.3, [], [], 0);
+
+var locationFive = new Location('Lima', 2, 16, 4.6, [], [], 0);
 
 
 function randCust (minCust, maxCust) {
