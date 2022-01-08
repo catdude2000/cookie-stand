@@ -1,6 +1,10 @@
 'use strict';
 console.log('app.js file is connected');
 
+function randCust (minCust, maxCust) {
+  return Math.floor(Math.random() * (maxCust - minCust) + minCust); //function used in each object to create randomized numbers of customers
+}
+
 let locationOne = { //creates first object
   place: 'Seattle',
   minCust: 23,
@@ -36,7 +40,7 @@ let locationTwo = {
   custPerHour: [],
   setCust: function(){
     for(let i = 0; i < 14; i++){
-      // this.custPerHour.push(randCust(this.minCust, this.maxCust));
+      this.custPerHour.push(randCust(this.minCust, this.maxCust));
     }
   },
   setCookPerHour: function (){
@@ -147,9 +151,6 @@ locationFive.setCust();
 locationFive.setCookPerHour();
 locationFive.setTotal();
 
-function randCust (minCust, maxCust) {
-  return Math.floor(Math.random() * (maxCust - minCust) + minCust); //function used in each object to create randomized numbers of customers
-}
 const popArray = [
   locationOne, locationTwo, locationThree, locationFour, locationFive]; //array needed to populate the objects with data
 // console.log('poparray', popArray);
