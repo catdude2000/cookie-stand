@@ -1,6 +1,13 @@
 'use strict';
 console.log('app.js file is connected');
 
+// var Location (place, mininumCust, maximumCust,){
+
+// }
+
+
+
+
 function randCust (minCust, maxCust) {
   return Math.floor(Math.random() * (maxCust - minCust) + minCust); //function used in each object to create randomized numbers of customers
 }
@@ -12,6 +19,7 @@ let locationOne = { //creates first object
   avgSales: 6.3,
   hourlySold: [], //creates array to be filled later
   custPerHour: [],
+  totalCookieSum: 0,
   setCust: function(){
     for(let i = 0; i < 14; i++){
       this.custPerHour.push(randCust(this.minCust, this.maxCust)); //fills custPerHour array with numbers using randCust function
@@ -24,11 +32,11 @@ let locationOne = { //creates first object
     }
   },
   setTotal: function() {
-    let sum = 0;
+    // let sum = 0;
     for (let i = 0; i < this.hourlySold.length; i++) { //adds up randomized hourly sold for a total (behind the scenes)
-      sum += this.hourlySold[i];
+      this.totalCookieSum += this.hourlySold[i];
     }
-    console.log('sum', sum);
+    // console.log('sum', sum);
   }
 };
 let locationTwo = {
@@ -38,6 +46,7 @@ let locationTwo = {
   avgSales: 1.2,
   hourlySold: [],
   custPerHour: [],
+  totalCookieSum: 0,
   setCust: function(){
     for(let i = 0; i < 14; i++){
       this.custPerHour.push(randCust(this.minCust, this.maxCust));
@@ -49,11 +58,11 @@ let locationTwo = {
     }
   },
   setTotal: function() {
-    let sum = 0;
+    // let sum = 0;
     for (let i = 0; i < this.hourlySold.length; i++) {
-      sum += this.hourlySold[i];
+      this.totalCookieSum += this.hourlySold[i];
     }
-    console.log('sum', sum);
+    // console.log('sum', sum);
   }
 };
 let locationThree = {
@@ -63,6 +72,7 @@ let locationThree = {
   avgSales: 3.7,
   hourlySold: [],
   custPerHour: [],
+  totalCookieSum: 0,
   setCust: function(){
     for(let i = 0; i < 14; i++){
       this.custPerHour.push(randCust(this.minCust, this.maxCust));
@@ -74,11 +84,11 @@ let locationThree = {
     }
   },
   setTotal: function() {
-    let sum = 0;
+    // let sum = 0;
     for (let i = 0; i < this.hourlySold.length; i++) {
-      sum += this.hourlySold[i];
+      this.totalCookieSum += this.hourlySold[i];
     }
-    console.log('sum', sum);
+    // console.log('sum', sum);
   }
 };
 let locationFour = {
@@ -88,6 +98,7 @@ let locationFour = {
   avgSales: 2.3,
   hourlySold: [],
   custPerHour: [],
+  totalCookieSum: 0,
   setCust: function(){
     for(let i = 0; i < 14; i++){
       this.custPerHour.push(randCust(this.minCust, this.maxCust));
@@ -99,11 +110,11 @@ let locationFour = {
     }
   },
   setTotal: function() {
-    let sum = 0;
+    // let sum = 0;
     for (let i = 0; i < this.hourlySold.length; i++) {
-      sum += this.hourlySold[i];
+      this.totalCookieSum += this.hourlySold[i];
     }
-    console.log('sum', sum);
+    // console.log('sum', sum);
   }
 };
 
@@ -114,7 +125,7 @@ let locationFive = {
   avgSales: 4.6,
   hourlySold: [],
   custPerHour: [],
-  total: this.sum,
+  totalCookieSum: 0,
   setCust: function(){
     for(let i = 0; i < 14; i++){
       this.custPerHour.push(randCust(this.minCust, this.maxCust));
@@ -127,11 +138,11 @@ let locationFive = {
     }
   },
   setTotal: function() {
-    let sum = 0;
+    // let sum = 0;
     for (let i = 0; i < this.hourlySold.length; i++) {
-      sum += this.hourlySold[i];
+      this.totalCookieSum += this.hourlySold[i];
     }
-    console.log('sum', sum);
+    // console.log('sum', sum);
   }
 };
 
@@ -154,18 +165,21 @@ locationFive.setTotal();
 const popArray = [
   locationOne, locationTwo, locationThree, locationFour, locationFive]; //array needed to populate the objects with data
 // console.log('poparray', popArray);
-const timeArray = ['6:00am: ', '7:00am: ', '8:00am: ', '9:00am: ', '10:00am: ', '11:00am: ', '12:00pm: ', '1:00pm: ', '2:00pm: ', '3:00pm: ', '4:00pm: ', '5:00pm: ', '6:00pm: ', '7:00pm: ', 'Total: ']; //array needed to display set data on page
+const timeArray = ['6:00am: ', '7:00am: ', '8:00am: ', '9:00am: ', '10:00am: ', '11:00am: ', '12:00pm: ', '1:00pm: ', '2:00pm: ', '3:00pm: ', '4:00pm: ', '5:00pm: ', '6:00pm: ', '7:00pm: ']; //array needed to display set data on page
 
 
 let soldList = document.getElementById('stList'); //links soldList to the stList tag in html
 console.log('soldlist', soldList);
 
-for(let i = 0; i< popArray.length; i++){ //iterates for loop below through array of location objects
-  for(let j = 0; j < timeArray.length; j++){ //iterates through array of set times for each object in popArray
+for(let i = 0; i< popArray.length; i++){ //iterates through array of location objects, runs 5 times
+  for(let j = 0; j < timeArray.length; j++){ //iterates through array of set times for each object in popArray, runs 15 times
     let soldListLi = document.createElement('li'); //creates list items (li's) in soldListLi
     soldListLi.textContent = timeArray[j] + popArray[i].hourlySold[j]; //fills list with iterated arrays to display hourly sold from each object/location
     soldList.appendChild(soldListLi); //puts soldListLi data iterated above into soldList (which is linked to stList in the html file)
   }
+  let storeTotal = document.createElement('li'); //creates additional li item
+  storeTotal.textContent = 'Total: ' + popArray[i].totalCookieSum; // creates text for li
+  soldList.appendChild(storeTotal); //puts text in li
 }
 // let sum = 0;
 // for (let k = 0; k < soldList.length; k++) {
