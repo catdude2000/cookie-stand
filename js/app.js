@@ -238,7 +238,28 @@ Location.prototype.header = function() {
 
 };
 
+Location.prototype.footer = function(){
+  let locTable = document.getElementById('stList');
+  console.log('lotab', locTable);
+  let footerRow= document.createElement('tr');
+  let footerCell = document.createElement('td');
+  footerRow.textContent = 'Totals';
+  footerRow.appendChild(footerCell);
+  for(let i = 0; i < allLocals.length; i++){
 
+    for(let j = 0; j < timeArray.length; j++){
+      let hourTotes;
+      let hourTotals = document.createElement('td');
+      hourTotes += allLocals[i].hourlySold[j];
+      hourTotals.textContent = hourTotes;
+      console.log('hourtoes', allLocals[i].hourlySold[j]);
+      footerRow.appendChild(hourTotes);
+    }
+
+
+  }
+  locTable.appendChild(footerRow);
+};
 
 Location.prototype.render = function() {
   let locTable = document.getElementById('stList');
@@ -263,32 +284,15 @@ Location.prototype.render = function() {
 
 };
 
-Location.prototype.footer = function(){
-  let locTable = document.getElementById('stlist');
-  let footerRow= document.createElement('tr');
-  let footerCell = document.createElement('td');
-  footerCell.textContent = 'Totals';
-  footerRow.appendChild(footerCell);
-  for(let i = 0; i <timeArray.length; i++){
-    let hourTotals = document.createElement('td');
-    for(let j = 0; j < allLocals.length; j++){
-      let hourTotes = allLocals[j].hourlySold[i];
-      console.log('hourtoes', hourTotes);
-    }
-    footerRow.appendChild(hourTotals);
 
-  }
-  locTable.appendChild(footerRow);
-};
 
 
 let allLocals = [locationOne, locationTwo, locationThree, locationFour, locationFive];
 
 Location.prototype.header();
 
-for(let i = 0; 0 < allLocals.length; i++){
+for(let i = 0; i < allLocals.length; i++){
   allLocals[i].render();
-
 }
 
-location.prototype.footer();
+Location.prototype.footer();
