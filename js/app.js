@@ -248,7 +248,7 @@ Location.prototype.footer = function(){
   for(let i = 0; i < allLocals.length; i++){
 
     for(let j = 0; j < timeArray.length; j++){
-      let hourTotes;
+      let hourTotes = document.getElementById('stList');
       let hourTotals = document.createElement('td');
       hourTotes += allLocals[i].hourlySold[j];
       hourTotals.textContent = hourTotes;
