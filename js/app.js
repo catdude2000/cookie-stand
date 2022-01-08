@@ -199,9 +199,9 @@ locationFive.setCust();
 locationFive.setCookPerHour();
 locationFive.setTotal();
 
-const popArray = [
-  locationOne, locationTwo, locationThree, locationFour, locationFive]; //array needed to populate the objects with data
-console.log('poparray', popArray);
+// const popArray = [
+//   locationOne, locationTwo, locationThree, locationFour, locationFive]; //array needed to populate the objects with data
+// console.log('poparray', popArray);
 const timeArray = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm']; //array needed to display set data on page
 
 
@@ -245,14 +245,16 @@ Location.prototype.footer = function(){
   let footerCell = document.createElement('td');
   footerRow.textContent = 'Totals';
   footerRow.appendChild(footerCell);
-  for(let i = 0; i < allLocals.length; i++){
-
-    for(let j = 0; j < timeArray.length; j++){
-      let hourTotes = document.getElementById('stList');
+  for(let i = 0; i < timeArray.length; i++){
+    let hourTotes = 0;
+    for(let j = 0; j < allLocals.length; j++){
+      // let hourTotes = 0;
+      // let hourTotes = document.getElementById('stList');
       let hourTotals = document.createElement('td');
-      hourTotes += allLocals[i].hourlySold[j];
+      hourTotes += allLocals[i].hourlySold[i];
+      // let footerCell = document.createElement('td');
       hourTotals.textContent = hourTotes;
-      console.log('hourtoes', allLocals[i].hourlySold[j]);
+      console.log('hourtoes', hourTotes);
       footerRow.appendChild(hourTotes);
     }
 
