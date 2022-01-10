@@ -32,7 +32,7 @@ function randCust (minCust, maxCust) {
 Location.prototype.setCust = function(){
   for(let i = 0; i < 14; i++){
     this.custPerHour.push(randCust(this.minCust, this.maxCust)); //fills custPerHour array with numbers using randCust function
-    console.log('custperhour', this.custPerHour);
+    // console.log('custperhour', this.custPerHour);
   }
 };
 
@@ -199,38 +199,102 @@ locationFive.setCust();
 locationFive.setCookPerHour();
 locationFive.setTotal();
 
-const popArray = [
-  locationOne, locationTwo, locationThree, locationFour, locationFive]; //array needed to populate the objects with data
-console.log('poparray', popArray);
-const timeArray = ['6:00am: ', '7:00am: ', '8:00am: ', '9:00am: ', '10:00am: ', '11:00am: ', '12:00pm: ', '1:00pm: ', '2:00pm: ', '3:00pm: ', '4:00pm: ', '5:00pm: ', '6:00pm: ', '7:00pm: ']; //array needed to display set data on page
+// const popArray = [
+//   locationOne, locationTwo, locationThree, locationFour, locationFive]; //array needed to populate the objects with data
+// console.log('poparray', popArray);
+const timeArray = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm']; //array needed to display set data on page
 
 
-let soldList = document.getElementById('stList'); //links soldList to the stList tag in html
-console.log('soldlist', soldList);
+// let soldList = document.getElementById('stList'); //links soldList to the stList tag in html
+// console.log('soldlist', soldList);
 
-for(let i = 0; i< popArray.length; i++){ //iterates through array of location objects, runs 5 times
-  for(let j = 0; j < timeArray.length; j++){ //iterates through array of set times for each object in popArray, runs 15 times
-    let soldListLi = document.createElement('li'); //creates list items (li's) in soldListLi
-    soldListLi.textContent = timeArray[j] + popArray[i].hourlySold[j]; //fills list with iterated arrays to display hourly sold from each object/location
-    soldList.appendChild(soldListLi); //puts soldListLi data iterated above into soldList (which is linked to stList in the html file)
+// for(let i = 0; i< popArray.length; i++){ //iterates through array of location objects, runs 5 times
+//   for(let j = 0; j < timeArray.length; j++){ //iterates through array of set times for each object in popArray, runs 15 times
+//     let soldListLi = document.createElement('li'); //creates list items (li's) in soldListLi
+//     soldListLi.textContent = timeArray[j] + popArray[i].hourlySold[j]; //fills list with iterated arrays to display hourly sold from each object/location
+//     soldList.appendChild(soldListLi); //puts soldListLi data iterated above into soldList (which is linked to stList in the html file)
+//   }
+//   let storeTotal = document.createElement('li'); //creates additional li item
+//   storeTotal.textContent = 'Total: ' + popArray[i].totalCookieSum; // creates text for li
+//   soldList.appendChild(storeTotal); //puts text in li
+// }
+
+
+Location.prototype.header = function() {
+  let locTable = document.getElementById('stList');
+  let headerRow = document.createElement('tr');
+  headerRow.textContent = 'Location';
+  for(let i = 0; i < timeArray.length; i++){
+    let timeData = document.createElement('td');
+    timeData.textContent = timeArray[i];
+    headerRow.appendChild(timeData);
   }
-  let storeTotal = document.createElement('li'); //creates additional li item
-  storeTotal.textContent = 'Total: ' + popArray[i].totalCookieSum; // creates text for li
-  soldList.appendChild(storeTotal); //puts text in li
+
+  let totals = document.createElement('td'); //adds sums to end of table
+  totals.textContent = 'totals';
+  headerRow.appendChild(totals);
+
+  locTable.appendChild(headerRow);
+
+};
+
+Location.prototype.footer = function(){
+  let locTable = document.getElementById('stList');
+  console.log('lotab', locTable);
+  let footerRow= document.createElement('tr');
+  let footerCell = document.createElement('td');
+  footerRow.textContent = 'Totals';
+  footerRow.appendChild(footerCell);
+  for(let i = 0; i < timeArray.length; i++){
+    let hourTotes = 0;
+    for(let j = 0; j < allLocals.length; j++){
+      // let hourTotes = 0;
+      // let hourTotes = document.getElementById('stList');
+      let hourTotals = document.createElement('td');
+      hourTotes += allLocals[i].hourlySold[i];
+      // let footerCell = document.createElement('td');
+      hourTotals.textContent = hourTotes;
+      console.log('hourtoes', hourTotes);
+      footerRow.appendChild(hourTotes);
+    }
+
+
+  }
+  locTable.appendChild(footerRow);
+};
+
+Location.prototype.render = function() {
+  let locTable = document.getElementById('stList');
+  let locRow = document.createElement('tr');
+  let nameCell = document.createElement('td');
+  nameCell.textContent = this.place;
+  locRow.appendChild(nameCell);
+  //get hourly cookie totals for render
+  for(let i = 0; i < timeArray.length; i++){
+    let hourlyData = document.createElement('td');
+    hourlyData.textContent = this.hourlySold[i];
+    locRow.appendChild(hourlyData);
+  }
+  let allStoreDayTotals = document.createElement('td'); //adds sums to end of table
+  allStoreDayTotals.textContent = this.totalCookieSum;
+  locRow.appendChild(allStoreDayTotals);
+  //this is where totals are coming from
+
+
+
+  locTable.appendChild(locRow); //putting row onto table
+
+};
+
+
+
+
+let allLocals = [locationOne, locationTwo, locationThree, locationFour, locationFive];
+
+Location.prototype.header();
+
+for(let i = 0; i < allLocals.length; i++){
+  allLocals[i].render();
 }
 
-
-
-Location.prototype.createElement = function() {
-  let parentElement = document.getElementById('stList');
-  console.log(parentElement);
-};
-// let sum = 0;
-// for (let k = 0; k < soldList.length; k++) {
-//   sum += soldList[k];
-// }
-// console.log(sum);
-
-
-// Pat will need to be able to add and remove locations from the daily projections report, and Pat will also need to be able to easily modify the input numbers for each location based on day of the week, special events, and other factors. Pat would like to see these numbers with nice formatting in a web application.
-
+Location.prototype.footer();
