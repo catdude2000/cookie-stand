@@ -224,6 +224,8 @@ Location.prototype.header = function() {
   let locTable = document.getElementById('stList');
   let headerRow = document.createElement('tr');
   headerRow.textContent = 'Location';
+
+
   for(let i = 0; i < timeArray.length; i++){
     let timeData = document.createElement('td');
     timeData.textContent = timeArray[i];
@@ -242,25 +244,35 @@ Location.prototype.footer = function(){
   let locTable = document.getElementById('stList');
   console.log('lotab', locTable);
   let footerRow= document.createElement('tr');
-  let footerCell = document.createElement('td');
   footerRow.textContent = 'Totals';
-  footerRow.appendChild(footerCell);
-  for(let i = 0; i < timeArray.length; i++){
-    let hourTotes = 0;
-    for(let j = 0; j < allLocals.length; j++){
-      // let hourTotes = 0;
-      // let hourTotes = document.getElementById('stList');
+
+  // let footerCell = document.createElement('td');
+
+  // footerRow.appendChild(footerCell);
+  for(let i = 0; i < allLocals.length; i++){
+  // let hourTotes = 0;
+    for(let j = 0; j < timeArray.length; j++){
       let hourTotals = document.createElement('td');
-      hourTotes += allLocals[i].hourlySold[i];
-      // let footerCell = document.createElement('td');
-      hourTotals.textContent = hourTotes;
-      console.log('hourtoes', hourTotes);
-      footerRow.appendChild(hourTotes);
+      hourTotals.textContent = 1 + 1;
+      // (locationOne[i] + locationTwo[i]
+      // + locationThree[i] + locationFour[i] + locationFive[i]);
+
+      console.log('hourtotals', hourTotals);
+      footerRow.appendChild(hourTotals);
+    // let hourTotes = 0;
+    // let hourTotes = document.getElementById('stList');
+    // let hourTotals = document.createElement('td');
+    // hourTotes += allLocals[i].hourlySold[i];
+    // let footerCell = document.createElement('td');
+    // hourTotals.textContent = hourTotes;
+    // console.log('hourtoes', hourTotes);
+    // footerRow.appendChild(hourTotes);
     }
-
-
+    // let bTotals = document.createElement('td');
+    // bTotals.textContent = ''
+    locTable.appendChild(footerRow);
   }
-  locTable.appendChild(footerRow);
+
 };
 
 Location.prototype.render = function() {
