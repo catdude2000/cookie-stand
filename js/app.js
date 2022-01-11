@@ -230,9 +230,10 @@ Location.prototype.header = function() {
     let timeData = document.createElement('td');
     timeData.textContent = timeArray[i];
     headerRow.appendChild(timeData);
+    // console.log('td', timeData);
   }
 
-  let totals = document.createElement('td'); //adds sums to end of table
+  let totals = document.createElement('td'); //adds text to end of table
   totals.textContent = 'totals';
   headerRow.appendChild(totals);
 
@@ -242,23 +243,25 @@ Location.prototype.header = function() {
 
 Location.prototype.footer = function(){
   let locTable = document.getElementById('stList');
-  console.log('lotab', locTable);
+  // console.log('lotab', locTable);
   let footerRow= document.createElement('tr');
   footerRow.textContent = 'Totals';
 
   // let footerCell = document.createElement('td');
 
   // footerRow.appendChild(footerCell);
-  for(let i = 0; i < allLocals.length; i++){
+  // for(let i = 0; i < allLocals.length; i++){
   // let hourTotes = 0;
-    for(let j = 0; j < timeArray.length; j++){
-      let hourTotals = document.createElement('td');
-      hourTotals.textContent = 1 + 1;
-      // (locationOne[i] + locationTwo[i]
-      // + locationThree[i] + locationFour[i] + locationFive[i]);
+  for(let j = 0; j < timeArray.length; j++){
+    console.log(allLocals[1]);
+    let hourTotals = document.createElement('td');
+    hourTotals.textContent = (locationOne.hourlySold[j] + locationTwo.hourlySold[j] + locationThree.hourlySold[j]
+       + locationFour.hourlySold[j] + locationFive.hourlySold[j]);
+    // (locationOne[i] + locationTwo[i]
+    // + locationThree[i] + locationFour[i] + locationFive[i]);
 
-      console.log('hourtotals', hourTotals);
-      footerRow.appendChild(hourTotals);
+    // console.log('hourtotals', hourTotals);
+    footerRow.appendChild(hourTotals);
     // let hourTotes = 0;
     // let hourTotes = document.getElementById('stList');
     // let hourTotals = document.createElement('td');
@@ -267,13 +270,16 @@ Location.prototype.footer = function(){
     // hourTotals.textContent = hourTotes;
     // console.log('hourtoes', hourTotes);
     // footerRow.appendChild(hourTotes);
-    }
-    // let bTotals = document.createElement('td');
-    // bTotals.textContent = ''
-    locTable.appendChild(footerRow);
   }
-
+  let totalTotals = document.createElement('td');
+  totalTotals.textContent = locationOne.totalCookieSum + locationTwo.totalCookieSum + locationThree.totalCookieSum + locationFour.totalCookieSum + locationFive.totalCookieSum;
+  footerRow.appendChild(totalTotals);
+  // let bTotals = document.createElement('td');
+  // bTotals.textContent = ''
+  locTable.appendChild(footerRow);
 };
+
+// };
 
 Location.prototype.render = function() {
   let locTable = document.getElementById('stList');
