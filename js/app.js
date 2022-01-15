@@ -137,16 +137,15 @@ Location.prototype.footer = function(){
   let footerRow= document.createElement('tr');
   footerRow.textContent = 'Totals';
 
-  // let footerCell = document.createElement('td');
 
-  // footerRow.appendChild(footerCell);
-  // for(let i = 0; i < allLocals.length; i++){
-  // let hourTotes = 0;
   for(let j = 0; j < timeArray.length; j++){
-    console.log(allLocals[1]);
+    // console.log(allLocals[1]);
     let hourTotals = document.createElement('td');
-    hourTotals.textContent = (locationOne.hourlySold[j] + locationTwo.hourlySold[j] + locationThree.hourlySold[j]
-       + locationFour.hourlySold[j] + locationFive.hourlySold[j]);
+    for(let i = 0; i < allLocals.length; i++){
+      hourTotals.textContent +=hourlySold[j];
+    }
+    // hourTotals.textContent = (locationOne.hourlySold[j] + locationTwo.hourlySold[j] + locationThree.hourlySold[j]
+    //    + locationFour.hourlySold[j] + locationFive.hourlySold[j]);
 
 
     // console.log('hourtotals', hourTotals);
@@ -154,6 +153,7 @@ Location.prototype.footer = function(){
 
   }
   let totalTotals = document.createElement('td');
+
   totalTotals.textContent = locationOne.totalCookieSum + locationTwo.totalCookieSum + locationThree.totalCookieSum + locationFour.totalCookieSum + locationFive.totalCookieSum;
   footerRow.appendChild(totalTotals);
 
@@ -179,102 +179,88 @@ Location.prototype.render = function() {
   locRow.appendChild(allStoreDayTotals);
   //this is where totals are coming from
 
-
-
   locTable.appendChild(locRow); //putting row onto table
 
 };
 
 
-
-
 let allLocals = [locationOne, locationTwo, locationThree, locationFour, locationFive];
 
-Location.prototype.header();
 
-for(let i = 0; i < allLocals.length; i++){
-  allLocals[i].render();
+function newTotal(){
+  let clearTable = document.getElementById('stList');
+  clearTable.innerHTML = ''; //clears table to redo with new object
+  Location.prototype.header();
+
+  for(let i = 0; i < allLocals.length; i++){
+
+    allLocals[i].render();
+  }
+
+  Location.prototype.footer();
 }
 
-Location.prototype.footer();
 
 
 
-
-let formElement = document.getElementById
-
-const myForm = document.getElementById('my-form');
-
-function formHandler(event){
-  console.log(event.target);
-}
-
-myForm.addEventListener('submit', formHandler);
-
-document.getElementById('').addEventListener('input', //function 
-);  
 
 //global variables
-let localeForm = document.getElementById('locale-Form')
-let localeList = document.getElementById('Locale-list')
-let newArray = 
-
-//add constructor to build objects
-function addStore(place, minCust, maxCust, avgSales){
-  this.place = place;
-  this.minCust = mincust;
-  this.maxCust = maxCust;
-  this.avgSales = avgSales;
-}
-//add a prototype method to build element for render method
-addStore.prototype.render = function(){
- let listItem = document.createElement('li');
- listItem.innerHTML = '<img width="" height="" src="images/ +this.newPlace' >
-
-//  return listItem;
-};
 
 
-//render all
-let renderAllPlaces = function(){
-  for(let i =0; i < allPlaces.length; i++){
-    //call prototype to build our html and append li to page
-    appendChild(allPlaces[i].render());
-  }
-}
+let formElement = document.getElementById('newLocale');
+let addPlace;
 
-//add function to render all input
+
 function handleSubmit(event){
-event.preventDefault();
-event.stopPropagation();
-// let placeInput = document.getElementById('place');
-// let placeValue = placeInput.value
+  event.preventDefault();
+  event.stopPropagation();
+  let placeValue = event.target.place.value;
+  let minCustValue = parseInt(event.target.minCust.value);
+  let maxCustValue = parseInt(event.target.maxCust.value);
+  let avgSalesValue = parseInt(event.target.avgSales.value);
 
-let placeValue = event.target.place.value;
-let minCustValue = event.target.minCust.value;
-let maxCustValue = event.target.maxCust.value;
-let avgSalesValue = event.target.avgSales.value;
+  console.log(typeof minCustValue);
 
-let addPlace = new Locale(placeValue, minCustValue, maxCustValue, avgSalesValue);
+  addPlace = new Location(placeValue, minCustValue, maxCustValue, avgSalesValue, [], [], 0);
 
-if(!event.target.place.value || !event.target.minCust.value || !event.target.maxCust.value || !event.target.avgSales.value){
+  addPlace.setCust();
+  addPlace.setCookPerHour();
+  addPlace.setTotal();
+  // addPlace.render();
+  console.log(addPlace);
 
-  let form = document.getElementById('newLacle')
+  // if(!event.target.place.value || !event.target.minCust.value || !event.target.maxCust.value || !event.target.avgSales.value){
+  //   form.reset();
+  // }
+  allLocals.push(addPlace);
+  newTotal();
+
+  let form = document.getElementById('newLocale');
   form.reset();
 }
 
+formElement.addEventListener('submit', handleSubmit);
+newTotal();
+//add constructor to build objects
+// function addStore(place, minCust, maxCust, avgSales){
+//   this.place = place;
+//   this.minCust = mincust;
+//   this.maxCust = maxCust;
+//   this.avgSales = avgSales;
+// }
+//add a prototype method to build element for render method
+// addStore.prototype.render = function(){
+//  let listItem = document.createElement('li');
+//  listItem.innerHTML = '<img width="" height="" src="images/ +this.newPlace' >
+
+//  return listItem;
+// };
 
 
-}  //closes submit
-//add handleFunction to capture form submit data
-//add form submission validation
-
-// add submit event eventlistener
-my-Form.addEventListener('submit', handleSubmit)
-allPlaces
-
-//addclick event to clear
-formClear.addEventListener('click', function(){
-  allPlaces = []
-
-})
+//render all
+// let renderAllPlaces = function(){
+//   for(let i =0; i < allPlaces.length; i++){
+//     //call prototype to build our html and append li to page
+//     appendChild(allPlaces[i].render());
+//   }
+// }
