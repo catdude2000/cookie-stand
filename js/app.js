@@ -137,26 +137,17 @@ Location.prototype.footer = function(){
   let footerRow= document.createElement('tr');
   footerRow.textContent = 'Totals';
 
-
+  let hourTotals = document.createElement('td');
   for(let j = 0; j < timeArray.length; j++){
     let hourlyTotal = 0;
-    let hourTotals;
     for(let i = 0; i < allLocals.length; i++){
-      let hourTotals = document.createElement('td');
       hourlyTotal += allLocals[i].hourlySold[j];
-      hourTotals.textcontent = hourlyTotal;
-
     }
-    // hourTotals.textContent = (locationOne.hourlySold[j] + locationTwo.hourlySold[j] + locationThree.hourlySold[j]
-    //    + locationFour.hourlySold[j] + locationFive.hourlySold[j]);
-
-
-    // console.log('hourtotals', hourTotals);
-    footerRow.appendChild(hourTotals);
-
+    hourTotals.textcontent = hourlyTotal;
   }
-  let totalTotals = document.createElement('td');
+  footerRow.appendChild(hourTotals);
 
+  let totalTotals = document.createElement('td');
   totalTotals.textContent = locationOne.totalCookieSum + locationTwo.totalCookieSum + locationThree.totalCookieSum + locationFour.totalCookieSum + locationFive.totalCookieSum;
   footerRow.appendChild(totalTotals);
 
