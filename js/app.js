@@ -199,9 +199,7 @@ locationFive.setCust();
 locationFive.setCookPerHour();
 locationFive.setTotal();
 
-// const popArray = [
-//   locationOne, locationTwo, locationThree, locationFour, locationFive]; //array needed to populate the objects with data
-// console.log('poparray', popArray);
+
 const timeArray = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm']; //array needed to display set data on page
 
 
@@ -266,8 +264,7 @@ Location.prototype.footer = function(){
   let totalTotals = document.createElement('td');
   totalTotals.textContent = locationOne.totalCookieSum + locationTwo.totalCookieSum + locationThree.totalCookieSum + locationFour.totalCookieSum + locationFive.totalCookieSum;
   footerRow.appendChild(totalTotals);
-  // let bTotals = document.createElement('td');
-  // bTotals.textContent = ''
+
   locTable.appendChild(footerRow);
 };
 
@@ -323,3 +320,58 @@ myForm.addEventListener('submit', formHandler);
 
 document.getElementById('').addEventListener('input', //function 
 );  
+
+//global variables
+let localeForm = document.getElementById('locale-Form')
+let localeList = document.getElementById('Locale-lisyt')
+let newArray = 
+
+//add constructor to build objects
+function addStore(place, minCust, maxCust, avgSales){
+  this.place = place;
+  this.minCust = mincust;
+  this.maxCust = maxCust;
+  this.avgSales = avgSales;
+}
+//add a prototype method to build element for render method
+addStore.prototype.render = function(){
+ let listItem = document.createElement('li');
+ listItem.innerHTML = '<img width="" height="" src="images/' +this.newPlace +
+
+ return listItem;
+};
+
+
+//render all
+let renderAllPlaces = function(){
+  for(let i =0; i < allPlaces.length; i++){
+    //call prototype to build our html and append li to page
+    appendChild(allPlaces[i].render());
+  }
+}
+
+//add function to render all input
+function handleSubmit(event){
+event.preventDefault();
+event.stopPropagation();
+
+if(!event.target.place.value || !event.){
+
+}
+let newPlace = event.target.place.value;
+
+let addPlace = new Place()
+
+}  //closes submit
+//add handleFunction to capture form submit data
+//add form submission validation
+
+// add submit event eventlistener
+my-Form.addEventListener('submit', handleSubmit)
+allPlaces
+
+//addclick event to clear
+formClear.addEventListener('click', function(){
+  allPlaces = []
+  
+})
