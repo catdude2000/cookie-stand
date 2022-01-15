@@ -27,8 +27,6 @@ function randCust (minCust, maxCust) {
 }
 
 
-
-
 Location.prototype.setCust = function(){
   for(let i = 0; i < 14; i++){
     this.custPerHour.push(randCust(this.minCust, this.maxCust)); //fills custPerHour array with numbers using randCust function
@@ -47,7 +45,6 @@ Location.prototype.setTotal = function() {
     this.totalCookieSum += this.hourlySold[i];
   }
 };
-
 
 // let locationOne = { //creates first object
 //   place: 'Seattle',
@@ -76,112 +73,7 @@ Location.prototype.setTotal = function() {
 //     // console.log('sum', sum);
 //   }
 // };
-// let locationTwo = {
-//   place: 'Tokyo',
-//   minCust: 3,
-//   maxCust: 24,
-//   avgSales: 1.2,
-//   hourlySold: [],
-//   custPerHour: [],
-//   totalCookieSum: 0,
-//   setCust: function(){
-//     for(let i = 0; i < 14; i++){
-//       this.custPerHour.push(randCust(this.minCust, this.maxCust));
-//     }
-//   },
-//   setCookPerHour: function (){
-//     for(let i = 0; i < 14; i++){
-//       this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
-//     }
-//   },
-//   setTotal: function() {
-//     // let sum = 0;
-//     for (let i = 0; i < this.hourlySold.length; i++) {
-//       this.totalCookieSum += this.hourlySold[i];
-//     }
-//     // console.log('sum', sum);
-//   }
-// };
-// let locationThree = {
-//   place: 'dubai',
-//   minCust: 11,
-//   maxCust: 38,
-//   avgSales: 3.7,
-//   hourlySold: [],
-//   custPerHour: [],
-//   totalCookieSum: 0,
-//   setCust: function(){
-//     for(let i = 0; i < 14; i++){
-//       this.custPerHour.push(randCust(this.minCust, this.maxCust));
-//     }
-//   },
-//   setCookPerHour: function (){
-//     for(let i = 0; i < 14; i++){
-//       this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
-//     }
-//   },
-//   setTotal: function() {
-//     // let sum = 0;
-//     for (let i = 0; i < this.hourlySold.length; i++) {
-//       this.totalCookieSum += this.hourlySold[i];
-//     }
-//     // console.log('sum', sum);
-//   }
-// };
-// let locationFour = {
-//   place: 'Paris',
-//   minCust: 20,
-//   maxCust: 38,
-//   avgSales: 2.3,
-//   hourlySold: [],
-//   custPerHour: [],
-//   totalCookieSum: 0,
-//   setCust: function(){
-//     for(let i = 0; i < 14; i++){
-//       this.custPerHour.push(randCust(this.minCust, this.maxCust));
-//     }
-//   },
-//   setCookPerHour: function (){
-//     for(let i = 0; i < 14; i++){
-//       this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
-//     }
-//   },
-//   setTotal: function() {
-//     // let sum = 0;
-//     for (let i = 0; i < this.hourlySold.length; i++) {
-//       this.totalCookieSum += this.hourlySold[i];
-//     }
-//     // console.log('sum', sum);
-//   }
-// };
 
-// let locationFive = {
-//   place: 'Lima',
-//   minCust: 2,
-//   maxCust: 16,
-//   avgSales: 4.6,
-//   hourlySold: [],
-//   custPerHour: [],
-//   totalCookieSum: 0,
-//   setCust: function(){
-//     for(let i = 0; i < 14; i++){
-//       this.custPerHour.push(randCust(this.minCust, this.maxCust));
-//     }
-//   },
-//   setCookPerHour: function(){
-//     for(let i = 0; i < 14; i++){
-//       this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales));
-//       // console.log('hourlysold', this.hourlySold);
-//     }
-//   },
-//   setTotal: function() {
-//     // let sum = 0;
-//     for (let i = 0; i < this.hourlySold.length; i++) {
-//       this.totalCookieSum += this.hourlySold[i];
-//     }
-//     // console.log('sum', sum);
-//   }
-// };
 
 locationOne.setCust(); //activates setcust function for location inside object
 locationOne.setCookPerHour(); //" setCookPerHour "
@@ -309,6 +201,7 @@ Location.prototype.footer();
 
 
 
+let formElement = document.getElementById
 
 const myForm = document.getElementById('my-form');
 
@@ -323,7 +216,7 @@ document.getElementById('').addEventListener('input', //function
 
 //global variables
 let localeForm = document.getElementById('locale-Form')
-let localeList = document.getElementById('Locale-lisyt')
+let localeList = document.getElementById('Locale-list')
 let newArray = 
 
 //add constructor to build objects
@@ -336,9 +229,9 @@ function addStore(place, minCust, maxCust, avgSales){
 //add a prototype method to build element for render method
 addStore.prototype.render = function(){
  let listItem = document.createElement('li');
- listItem.innerHTML = '<img width="" height="" src="images/' +this.newPlace +
+ listItem.innerHTML = '<img width="" height="" src="images/ +this.newPlace' >
 
- return listItem;
+//  return listItem;
 };
 
 
@@ -354,13 +247,23 @@ let renderAllPlaces = function(){
 function handleSubmit(event){
 event.preventDefault();
 event.stopPropagation();
+// let placeInput = document.getElementById('place');
+// let placeValue = placeInput.value
 
-if(!event.target.place.value || !event.){
+let placeValue = event.target.place.value;
+let minCustValue = event.target.minCust.value;
+let maxCustValue = event.target.maxCust.value;
+let avgSalesValue = event.target.avgSales.value;
 
+let addPlace = new Locale(placeValue, minCustValue, maxCustValue, avgSalesValue);
+
+if(!event.target.place.value || !event.target.minCust.value || !event.target.maxCust.value || !event.target.avgSales.value){
+
+  let form = document.getElementById('newLacle')
+  form.reset();
 }
-let newPlace = event.target.place.value;
 
-let addPlace = new Place()
+
 
 }  //closes submit
 //add handleFunction to capture form submit data
@@ -373,5 +276,5 @@ allPlaces
 //addclick event to clear
 formClear.addEventListener('click', function(){
   allPlaces = []
-  
+
 })

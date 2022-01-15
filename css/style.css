@@ -55,7 +55,9 @@ section {
   font-size: large;
   color: rgb(82, 118, 45);
 }
-
+table {
+  margin-bottom: 50px;
+}
 /* button{
 
 }

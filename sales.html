@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -20,20 +17,21 @@
    <main><a href="index.html">Home</a></main>
    <form id="my-form">
     <fieldset>
-      <legend>Form</legend>
+      <legend>New Store Location Form</legend>
  
-     <label for=""></label>
-     <input type="text" name='place'>
+     <label for="">Store Location</label>
+     <input type="text" name='place'  required>
  
-     <label for=""></label>
-     <input type="text" name = 'mincust'>
+     <label for="">Minimum Customers</label>
+     <input type="text" name = 'mincust' required>
  
-     <label for=""></label>
-     <input type="text" name = 'maxCust'>
+     <label for="">Maximum Customers</label>
+     <input type="text" name = 'maxCust' required>
  
-     <label for=""></label>
-     <input type="text" name = 'avgSales'>
-     
+     <label for="">Average Sales</label>
+     <input type="text" name = 'avgSales' required>
+
+     <button type="reset" value="reset">Reset Form</button>
  <button type="submit">Submit</button>
     </fieldset>
   </form>
