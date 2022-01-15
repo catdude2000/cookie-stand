@@ -257,19 +257,11 @@ Location.prototype.footer = function(){
     let hourTotals = document.createElement('td');
     hourTotals.textContent = (locationOne.hourlySold[j] + locationTwo.hourlySold[j] + locationThree.hourlySold[j]
        + locationFour.hourlySold[j] + locationFive.hourlySold[j]);
-    // (locationOne[i] + locationTwo[i]
-    // + locationThree[i] + locationFour[i] + locationFive[i]);
+
 
     // console.log('hourtotals', hourTotals);
     footerRow.appendChild(hourTotals);
-    // let hourTotes = 0;
-    // let hourTotes = document.getElementById('stList');
-    // let hourTotals = document.createElement('td');
-    // hourTotes += allLocals[i].hourlySold[i];
-    // let footerCell = document.createElement('td');
-    // hourTotals.textContent = hourTotes;
-    // console.log('hourtoes', hourTotes);
-    // footerRow.appendChild(hourTotes);
+
   }
   let totalTotals = document.createElement('td');
   totalTotals.textContent = locationOne.totalCookieSum + locationTwo.totalCookieSum + locationThree.totalCookieSum + locationFour.totalCookieSum + locationFive.totalCookieSum;
@@ -316,3 +308,18 @@ for(let i = 0; i < allLocals.length; i++){
 }
 
 Location.prototype.footer();
+
+
+
+
+
+const myForm = document.getElementById('my-form');
+
+function formHandler(event){
+  console.log(event.target);
+}
+
+myForm.addEventListener('submit', formHandler);
+
+document.getElementById('').addEventListener('input', //function 
+);  
