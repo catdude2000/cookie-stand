@@ -46,34 +46,6 @@ Location.prototype.setTotal = function() {
   }
 };
 
-// let locationOne = { //creates first object
-//   place: 'Seattle',
-//   minCust: 23,
-//   maxCust: 65,
-//   avgSales: 6.3,
-//   hourlySold: [], //creates array to be filled later
-//   custPerHour: [],
-//   totalCookieSum: 0,
-//   setCust: function(){
-//     for(let i = 0; i < 14; i++){
-//       this.custPerHour.push(randCust(this.minCust, this.maxCust)); //fills custPerHour array with numbers using randCust function
-//       // console.log('custperhour', this.custPerHour);
-//     }
-//   },
-//   setCookPerHour: function (){
-//     for(let i = 0; i < 14; i++){
-//       this.hourlySold.push(Math.floor(this.custPerHour[i] * this.avgSales)); //uses set avg sales with already randomized to give number of cookies sold per hour
-//     }
-//   },
-//   setTotal: function() {
-//     // let sum = 0;
-//     for (let i = 0; i < this.hourlySold.length; i++) { //adds up randomized hourly sold for a total (behind the scenes)
-//       this.totalCookieSum += this.hourlySold[i];
-//     }
-//     // console.log('sum', sum);
-//   }
-// };
-
 
 locationOne.setCust(); //activates setcust function for location inside object
 locationOne.setCookPerHour(); //" setCookPerHour "
@@ -95,19 +67,6 @@ locationFive.setTotal();
 const timeArray = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm']; //array needed to display set data on page
 
 
-// let soldList = document.getElementById('stList'); //links soldList to the stList tag in html
-// console.log('soldlist', soldList);
-
-// for(let i = 0; i< popArray.length; i++){ //iterates through array of location objects, runs 5 times
-//   for(let j = 0; j < timeArray.length; j++){ //iterates through array of set times for each object in popArray, runs 15 times
-//     let soldListLi = document.createElement('li'); //creates list items (li's) in soldListLi
-//     soldListLi.textContent = timeArray[j] + popArray[i].hourlySold[j]; //fills list with iterated arrays to display hourly sold from each object/location
-//     soldList.appendChild(soldListLi); //puts soldListLi data iterated above into soldList (which is linked to stList in the html file)
-//   }
-//   let storeTotal = document.createElement('li'); //creates additional li item
-//   storeTotal.textContent = 'Total: ' + popArray[i].totalCookieSum; // creates text for li
-//   soldList.appendChild(storeTotal); //puts text in li
-// }
 
 
 Location.prototype.header = function() {
@@ -120,7 +79,6 @@ Location.prototype.header = function() {
     let timeData = document.createElement('td');
     timeData.textContent = timeArray[i];
     headerRow.appendChild(timeData);
-    // console.log('td', timeData);
   }
 
   let totals = document.createElement('td'); //adds text to end of table
@@ -158,7 +116,6 @@ Location.prototype.footer = function(){
   locTable.appendChild(footerRow);
 };
 
-// };
 
 Location.prototype.render = function() {
   let locTable = document.getElementById('stList');
@@ -198,16 +155,10 @@ function newTotal(){
   Location.prototype.footer();
 }
 
-
-
-
-
 //global variables
-
 
 let formElement = document.getElementById('newLocale');
 let addPlace;
-
 
 function handleSubmit(event){
   event.preventDefault();
@@ -224,12 +175,9 @@ function handleSubmit(event){
   addPlace.setCust();
   addPlace.setCookPerHour();
   addPlace.setTotal();
-  // addPlace.render();
   console.log(addPlace);
 
-  // if(!event.target.place.value || !event.target.minCust.value || !event.target.maxCust.value || !event.target.avgSales.value){
-  //   form.reset();
-  // }
+
   allLocals.push(addPlace);
   newTotal();
 
@@ -239,26 +187,3 @@ function handleSubmit(event){
 
 formElement.addEventListener('submit', handleSubmit);
 newTotal();
-//add constructor to build objects
-// function addStore(place, minCust, maxCust, avgSales){
-//   this.place = place;
-//   this.minCust = mincust;
-//   this.maxCust = maxCust;
-//   this.avgSales = avgSales;
-// }
-//add a prototype method to build element for render method
-// addStore.prototype.render = function(){
-//  let listItem = document.createElement('li');
-//  listItem.innerHTML = '<img width="" height="" src="images/ +this.newPlace' >
-
-//  return listItem;
-// };
-
-
-//render all
-// let renderAllPlaces = function(){
-//   for(let i =0; i < allPlaces.length; i++){
-//     //call prototype to build our html and append li to page
-//     appendChild(allPlaces[i].render());
-//   }
-// }
